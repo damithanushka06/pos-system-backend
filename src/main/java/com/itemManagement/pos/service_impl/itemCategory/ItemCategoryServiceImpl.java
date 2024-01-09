@@ -15,27 +15,29 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
     @Override
     public ResponseEntity<Object> createCategory(ItemCategory itemCategory) {
         itemCategoryRepository.save(itemCategory);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<Object> updateCategory(ItemCategory itemCategory) {
         if(itemCategory.getId() != null){
             ItemCategory exsistItemCategory = itemCategoryRepository.findById(itemCategory.getId()).orElse(null);
+            assert exsistItemCategory != null;
             exsistItemCategory.setName(itemCategory.getName());
             itemCategoryRepository.save(exsistItemCategory);
         }
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Object> deleteCategory(Long id) {
         if(id != null){
             ItemCategory exsistItemCategory = itemCategoryRepository.findById(id).orElse(null);
+            assert exsistItemCategory != null;
             exsistItemCategory.setStatus("Deleted");
             itemCategoryRepository.save(exsistItemCategory);
         }
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
