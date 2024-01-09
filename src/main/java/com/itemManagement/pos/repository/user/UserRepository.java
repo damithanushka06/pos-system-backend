@@ -1,5 +1,5 @@
-package com.itemManagement.pos.repository;
-import com.itemManagement.pos.entity.User;
+package com.itemManagement.pos.repository.user;
+import com.itemManagement.pos.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

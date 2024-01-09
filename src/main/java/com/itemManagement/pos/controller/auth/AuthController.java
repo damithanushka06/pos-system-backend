@@ -1,10 +1,10 @@
-package com.itemManagement.pos.controller;
+package com.itemManagement.pos.controller.auth;
 
-import com.itemManagement.pos.dto.LoginDTO;
-import com.itemManagement.pos.entity.User;
-import com.itemManagement.pos.repository.UserRepository;
+import com.itemManagement.pos.dto.auth.LoginDTO;
+import com.itemManagement.pos.entity.user.User;
+import com.itemManagement.pos.repository.user.UserRepository;
 import com.itemManagement.pos.security.jwt.JwtUtils;
-import com.itemManagement.pos.service.UserService;
+import com.itemManagement.pos.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,8 +23,12 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
 
     @Autowired
     PasswordEncoder passwordEncoder;

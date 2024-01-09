@@ -1,7 +1,7 @@
-package com.itemManagement.pos.service;
+package com.itemManagement.pos.service.user;
 
-import com.itemManagement.pos.dto.UserPwdDTO;
-import com.itemManagement.pos.entity.User;
+import com.itemManagement.pos.dto.auth.UserPwdDTO;
+import com.itemManagement.pos.entity.user.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.itemManagement.pos.dto;
+package com.itemManagement.pos.dto.auth;
 import lombok.Getter;
 import lombok.Setter;
 

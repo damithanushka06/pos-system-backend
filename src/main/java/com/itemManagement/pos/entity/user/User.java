@@ -1,4 +1,4 @@
-package com.itemManagement.pos.entity;
+package com.itemManagement.pos.entity.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.itemManagement.pos.security;
 
-import com.itemManagement.pos.entity.User;
-import com.itemManagement.pos.repository.UserRepository;
+import com.itemManagement.pos.entity.user.User;
+import com.itemManagement.pos.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
