@@ -22,17 +22,17 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/orders")
+    @GetMapping("/get_all_orders")
     public ResponseEntity<List<Order>> getAllOrders() {
         return ResponseEntity.status(200).body(orderService.getAllOrders());
     }
 
-    @GetMapping("/orders/{id}")
+    @GetMapping("/get_order_by_id/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
         return ResponseEntity.status(200).body(orderService.getOrderById(id));
     }
 
-    @PostMapping("/orders")
+    @PostMapping("/complete_order")
     public ResponseEntity<Order> createOrder(@RequestBody OrderDTO orderDTO) {
         Order newOrder = orderService.createOrder(orderDTO);
 

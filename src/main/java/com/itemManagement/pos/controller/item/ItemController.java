@@ -27,13 +27,13 @@ public class ItemController {
         return itemService.getItemList();
     }
 
-    @PutMapping("/update_item")
-    public ResponseEntity<Object> updateItem(@RequestBody ItemDto itemDto){
-        return itemService.updateItem(itemDto);
+    @PutMapping("/update_item/{id}")
+    public ResponseEntity<Object> updateItem(@PathVariable Long id, @RequestBody ItemDto itemDto){
+        return itemService.updateItem(id, itemDto);
     }
 
-    @DeleteMapping("/delete_item")
-    public ResponseEntity<Object> deleteItem(@RequestParam Long id){
+    @DeleteMapping("/delete_item/{id}")
+    public ResponseEntity<Object> deleteItem(@PathVariable Long id){
         return itemService.deleteItem(id);
     }
 

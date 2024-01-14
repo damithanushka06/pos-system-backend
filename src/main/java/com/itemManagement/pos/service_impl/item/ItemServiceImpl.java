@@ -25,6 +25,7 @@ public class ItemServiceImpl implements ItemService {
         ItemCategory itemCategory = itemCategoryRepository.findById(itemDto.getCategoryId()).orElse(null);;
         if(itemCategory != null){
             Item item = new Item();
+            item.setStatus("A");
             item.setName(itemDto.getName());
             item.setPrice(itemDto.getPrice());
             item.setQty(itemDto.getQty());
@@ -36,10 +37,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ResponseEntity<Object> updateItem(ItemDto itemDto) {
-        Item exsistingItem = itemRepository.findById(itemDto.getId()).orElse(null);
+    public ResponseEntity<Object> updateItem(Long id, ItemDto itemDto) {
+        Item exsistingItem = itemRepository.findById(id).orElse(null);
         if(exsistingItem != null){
-            ItemCategory itemCategory = itemCategoryRepository.findById(itemDto.getCategoryId()).orElse(null);
+            ItemCategory itemCategory = itemCategoryRepository.findById(id).orElse(null);
             exsistingItem.setName(itemDto.getName());
             exsistingItem.setItemCategory(itemCategory);
             exsistingItem.setPrice(itemDto.getPrice());

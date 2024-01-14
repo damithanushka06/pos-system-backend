@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public interface ItemService {
     Item createItem(ItemDto itemDto);
 
-    ResponseEntity<Object> updateItem(ItemDto itemDto);
+    ResponseEntity<Object> updateItem(Long id, ItemDto itemDto);
 
     ResponseEntity<Object> deleteItem(Long id);
 
