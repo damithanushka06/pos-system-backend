@@ -12,4 +12,6 @@ public interface ItemService {
     ResponseEntity<Object> updateItem(ItemDto itemDto);
 
     ResponseEntity<Object> deleteItem(Long id);
+
+    ResponseEntity<Object> getItemList();
 }

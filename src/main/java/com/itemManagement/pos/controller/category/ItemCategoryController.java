@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ItemCategoryController {
     @Autowired
     private ItemCategoryService itemCategoryService;
@@ -16,13 +17,18 @@ public class ItemCategoryController {
          return itemCategoryService.createCategory(itemCategory);
     }
 
-    @PutMapping("/update_category")
-    public ResponseEntity<Object> updateCategory(@RequestBody ItemCategory itemCategory){
-        return itemCategoryService.updateCategory(itemCategory);
+    @GetMapping("/get_category_list")
+    public ResponseEntity<Object> getAllCategories(){
+        return itemCategoryService.getAllCategories();
     }
 
-    @DeleteMapping("/delete_category")
-    public ResponseEntity<Object> deleteItemCategory(@RequestParam Long id){
+    @PutMapping("/update_category/{id}")
+    public ResponseEntity<Object> updateCategory(@PathVariable Long id, @RequestBody ItemCategory itemCategory){
+        return itemCategoryService.updateCategory(id, itemCategory);
+    }
+
+    @DeleteMapping("/delete_category/{id}")
+    public ResponseEntity<Object> deleteItemCategory(@PathVariable Long id){
         return itemCategoryService.deleteCategory(id);
     }
 }

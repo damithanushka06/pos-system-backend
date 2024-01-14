@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 public interface ItemCategoryService {
     ResponseEntity<Object> createCategory(ItemCategory itemCategory);
 
-    ResponseEntity<Object> updateCategory(ItemCategory itemCategory);
+    ResponseEntity<Object> updateCategory(Long id, ItemCategory itemCategory);
 
     ResponseEntity<Object> deleteCategory(Long id);
+
+    ResponseEntity<Object> getAllCategories();
 }

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*") //allowing cross origin to all
 public class ItemController {
 
     @Autowired
@@ -19,6 +20,11 @@ public class ItemController {
         }catch (Exception e){
             return ResponseEntity.status(207).body("Failed to create the item");
         }
+    }
+
+    @GetMapping("/get_all_item")
+    public ResponseEntity<Object> getAllItems(){
+        return itemService.getItemList();
     }
 
     @PutMapping("/update_item")

@@ -51,7 +51,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseEntity<Object> deleteItem(Long id) {
-        itemRepository.findById(id).ifPresent(exsistingItem -> exsistingItem.setStatus("Deleted"));
+        itemRepository.findById(id).ifPresent(exsistingItem -> exsistingItem.setStatus("D"));
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Object> getItemList() {
+        return new ResponseEntity<>(itemRepository.findItemByStatusNotDeleted(),HttpStatus.OK);
     }
 }

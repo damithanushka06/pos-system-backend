@@ -19,9 +19,9 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
     }
 
     @Override
-    public ResponseEntity<Object> updateCategory(ItemCategory itemCategory) {
-        if(itemCategory.getId() != null){
-            ItemCategory exsistItemCategory = itemCategoryRepository.findById(itemCategory.getId()).orElse(null);
+    public ResponseEntity<Object> updateCategory(Long id, ItemCategory itemCategory) {
+        if(id != null){
+            ItemCategory exsistItemCategory = itemCategoryRepository.findById(id).orElse(null);
             assert exsistItemCategory != null;
             exsistItemCategory.setName(itemCategory.getName());
             itemCategoryRepository.save(exsistItemCategory);
@@ -34,10 +34,15 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
         if(id != null){
             ItemCategory exsistItemCategory = itemCategoryRepository.findById(id).orElse(null);
             assert exsistItemCategory != null;
-            exsistItemCategory.setStatus("Deleted");
+            exsistItemCategory.setStatus("D");
             itemCategoryRepository.save(exsistItemCategory);
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Object> getAllCategories() {
+        return new ResponseEntity<>(itemCategoryRepository.findAll(), HttpStatus.OK);
     }
 
 
