@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.itemManagement.pos.entity.order.Order;
+import com.itemManagement.pos.entity.order.OrderMaster;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,6 +40,6 @@ public class Item {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "items")
-    private Set<Order> orders = new HashSet<>();
+    private Set<OrderMaster> orders = new HashSet<>();
 
 }

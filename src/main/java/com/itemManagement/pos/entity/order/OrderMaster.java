@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "orders")
-public class Order {
+public class OrderMaster {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
