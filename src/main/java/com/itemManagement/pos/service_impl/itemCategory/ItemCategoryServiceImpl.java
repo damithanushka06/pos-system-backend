@@ -14,6 +14,9 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
 
     @Override
     public ResponseEntity<Object> createCategory(ItemCategory itemCategory) {
+        if(itemCategory.getName().isEmpty()){
+            return new ResponseEntity<>("Category Name is Required.", HttpStatus.MULTI_STATUS);
+        }
         itemCategory.setStatus("A");
         itemCategoryRepository.save(itemCategory);
         return new ResponseEntity<>(HttpStatus.CREATED);
