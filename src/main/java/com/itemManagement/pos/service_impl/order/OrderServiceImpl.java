@@ -62,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
         order.setTax(tax);
         order.setOrderTime(LocalDateTime.now());
         order.setItems(itemSet);
-        order.setStatus("Active");
+        order.setStatus("Pending");
 
         return orderRepository.save(order);
     }
