@@ -14,6 +14,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
 
     @Override
     public ResponseEntity<Object> createCategory(ItemCategory itemCategory) {
+        itemCategory.setStatus("A");
         itemCategoryRepository.save(itemCategory);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -42,7 +43,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
 
     @Override
     public ResponseEntity<Object> getAllCategories() {
-        return new ResponseEntity<>(itemCategoryRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(itemCategoryRepository.findItemCategoryNotDeleted(), HttpStatus.OK);
     }
 
 

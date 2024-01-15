@@ -38,6 +38,9 @@ public class Order {
     @Column(nullable = false)
     private Double tax;
 
+    @Column(nullable = true)
+    String status;
+
     @ManyToMany
     @JoinTable(
         name = "order_item",

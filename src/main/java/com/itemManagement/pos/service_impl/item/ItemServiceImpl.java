@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ItemServiceImpl implements ItemService {
 
@@ -52,7 +54,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseEntity<Object> deleteItem(Long id) {
-        itemRepository.findById(id).ifPresent(exsistingItem -> exsistingItem.setStatus("D"));
+        Optional<Item> item = itemRepository.findById(id);
+        if(item.isPresent()){
+            Item updateItem = item.get();
+            updateItem.setStatus("D");
+            itemRepository.save(updateItem);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

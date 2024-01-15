@@ -34,17 +34,17 @@ public class OrderServiceImpl implements OrderService {
 
         Order order = new Order();
 
-        List<Long> products = orderDTO.getItems();
+        List<Long> items = orderDTO.getItems();
 
-        Set<Item> productsSet = new HashSet<>();
+        Set<Item> itemSet = new HashSet<>();
 
         order.setTotal(0.0);
 
-        for (Long productId : products) {
+        for (Long productId : items) {
             Item product = itemRepository.findById(productId).orElse(null);
 
             if(product != null && product.getQty() != 0) {
-                productsSet.add(product);
+                itemSet.add(product);
                 order.setTotal(order.getTotal() + product.getPrice());
 
                 //Reduce the QTY of current stock
@@ -55,7 +55,8 @@ public class OrderServiceImpl implements OrderService {
 
         order.setTax(tax);
         order.setOrderTime(LocalDateTime.now());
-        order.setItems(productsSet);
+        order.setItems(itemSet);
+        order.setStatus("Active");
 
         return orderRepository.save(order);
     }
